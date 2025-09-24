@@ -4,6 +4,7 @@ import {getCookie} from 'cookies-next/client';
 
 import DSCOHeader, {
   getDefaultHeaderProps,
+// eslint-disable-next-line import-x/no-unresolved
 } from '@code-dot-org/component-library/cms/header';
 
 import {getStage} from '@/config/stage';
