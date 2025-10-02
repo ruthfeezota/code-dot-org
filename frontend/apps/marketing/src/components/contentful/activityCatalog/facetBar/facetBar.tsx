@@ -108,14 +108,14 @@ const FacetBar = ({
                 onMouseLeave: () => setOpenFacet(null),
                 sx: theme => ({
                   p: {xs: 1, sm: 2},
-                  pb: {xs: 1, sm: 2},
                   boxShadow: 2,
-                  paddingBottom: 1,
                   backgroundColor: '#E9FAFF',
                   borderRadius: 0.5,
                   boxSizing: 'border-box',
                   overflow: 'auto',
                   zIndex: theme.zIndex.modal + 1,
+                  // FIX: Set a responsive max-height to prevent menu from being cut off
+                  maxHeight: '40vh',
                 }),
               },
               MenuListProps: {
