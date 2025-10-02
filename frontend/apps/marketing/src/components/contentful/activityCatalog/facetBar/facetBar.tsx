@@ -127,30 +127,27 @@ const FacetBar = ({
             sx={theme => ({
               width: 'auto',
               minWidth: 'fit-content',
-              '.MuiSelect-select': {
+              '& .MuiSelect-select': {
                 minWidth: 'fit-content',
                 padding: 1.8,
                 fontSize: 19,
                 display: 'inline-flex',
+                alignItems: 'center',
                 verticalAlign: 'top',
-                '.MuiSelect-select': {
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  whiteSpace: 'nowrap',
-                  minWidth: 'max-content',
+                whiteSpace: 'nowrap',
+                borderRadius: 999,
+                backgroundColor: hasSelectedValue
+                  ? theme.palette.primary.main
+                  : 'transparent',
+                color: hasSelectedValue
+                  ? theme.palette.common.white
+                  : 'inherit',
+              },
 
-                  backgroundColor: hasSelectedValue
-                    ? theme.palette.primary.main
-                    : 'inherit',
-                  color: hasSelectedValue
-                    ? theme.palette.common.white
-                    : 'inherit',
-                },
-                '& .MuiSelect-icon': {
-                  color: hasSelectedValue
-                    ? theme.palette.common.white
-                    : theme.palette.action.active,
-                },
+              '& .MuiSelect-icon': {
+                color: hasSelectedValue
+                  ? theme.palette.common.white
+                  : theme.palette.action.active,
               },
             })}
             displayEmpty
@@ -158,13 +155,9 @@ const FacetBar = ({
               <span style={{whiteSpace: 'nowrap'}}>{FACET_LABELS[facet]}</span>
             )}
           >
-            {facetValues.map(facetValue => {
-              return getDropdownMenuItem(
-                selectedFacets[facet],
-                facet,
-                facetValue,
-              );
-            })}
+            {facetValues.map(facetValue =>
+              getDropdownMenuItem(selectedFacets[facet], facet, facetValue),
+            )}
           </Select>
         </FormControl>
       );
@@ -203,10 +196,9 @@ const FacetBar = ({
           onClick={onClearAll}
           sx={{
             borderRadius: 999,
-            py: 3,
+            py: 2,
             mr: {xs: 0, sm: 'auto'},
-            ml: {xs: 0, sm: 0},
-            pl: 4,
+            ml: {xs: 0, sm: 1},
           }}
         >
           Clear All
